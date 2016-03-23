@@ -160,6 +160,24 @@ void (*krk(a, b, c))(int)
   return aa;
 }
 
+int hhh(int());
+
+int (testparen)(int T) {
+  return T;
+}
+
+int (testparen2(int T)) {
+  return T;
+}
+
+int ((testparen3)(int T)) {
+  return T;
+}
+
+int ((((((((((testparen10))))))))))(int T) {
+  return T;
+}
+
 int main () {
   f(g);
   i();
