@@ -3,7 +3,7 @@ include ../../Makefile.config
 CC=../../ccomp 
 CFLAGS=$(CCOMPOPTS) -stdlib ../../runtime -dparse -dclight -dasm -fstruct-passing
 LIBS=$(LIBMATH)
-TIME=ocaml unix.cma ../../tools/xtime.ml -mintime 2.0 -minruns 4
+TIME=ocaml unix.cma ../tools/xtime.ml -mintime 2.0 -minruns 4
 
 OBJS=memory.o gmllexer.o gmlparser.o eval.o \
   arrays.o vector.o matrix.o object.o intersect.o surface.o light.o \

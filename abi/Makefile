@@ -109,3 +109,4 @@ staticlayout.cc: staticlayout.c layout.h
 clean::
 	rm -f *.[os] *.compcert *.cc2compcert *.compcert2cc *.light.c
 
+bench:

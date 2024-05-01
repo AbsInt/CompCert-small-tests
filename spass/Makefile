@@ -24,7 +24,7 @@ clean:
 test:
 	$(SIMU) ./spass small_problem.dfg | grep 'Proof found'
 
-TIME=ocaml unix.cma ../../tools/xtime.ml -o /dev/null -mintime 5.0
+TIME=ocaml unix.cma ../tools/xtime.ml -o /dev/null -mintime 5.0
 
 bench:
 	@$(TIME) -name spass -- ./spass problem.dfg

@@ -7,7 +7,7 @@ CFLAGS=-O1 -Wall
 
 LIBS=$(LIBMATH)
 
-TIME=ocaml unix.cma ../../tools/xtime.ml -o /dev/null -mintime 2.0 -minruns 4
+TIME=ocaml unix.cma ../tools/xtime.ml -o /dev/null -mintime 2.0 -minruns 4
 
 PROGS=fib integr qsort fft fftsp fftw sha1 sha3 aes almabench \
   lists binarytrees fannkuch knucleotide mandelbrot nbody \
