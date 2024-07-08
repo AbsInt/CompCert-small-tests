@@ -15,6 +15,7 @@ COQINCLUDES += -R ./csyntax compcert.test.csyntax
 
 CLIGHTGEN=../../clightgen -stdlib ../../runtime
 COQC=coqc
+COQCOPTS=-noglob -w -deprecated-native-compiler-option -native-compiler no
 
 # Regression tests in the current directory
 SRC=$(wildcard *.c)
@@ -60,7 +61,8 @@ csyntax/%.v: ../raytracer/%.c
 	$(CLIGHTGEN) -csyntax -I../raytracer -fall $(CFLAGS) -o $@ $<
 
 %.vo: %.v
-	$(COQC) $(COQINCLUDES) -noglob $<
+	@echo "COQC $*.v"
+	@$(COQC) $(COQINCLUDES) $(COQCOPTS) $<
 
 .SECONDARY: $(GENERATED)
 
