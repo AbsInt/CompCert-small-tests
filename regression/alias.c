@@ -149,6 +149,35 @@ int get8(void)
   return x;
 }
 
+/* For the purpose of alias analysis, &x + 1 and &y can be considered
+   different, even though they can point to the same address. */
+
+int x = 0, y = 0;
+
+int get9(void)
+{
+  int before = y;
+  *(&x + 1) = 42;
+  int after = y;
+  return before + after;
+}
+
+/* However, &x + 1 and &y must not be assumed to be different */
+
+int NOINLINE samepointer(int * p, int * q)
+{
+  return p == q;
+}
+
+int test10(void)
+{
+  int res = samepointer(&x + 1, &y);
+  if (&x + 1 == &y)
+    return res == 1;
+  else
+    return res == 0;
+}
+
 /* Test harness */
 
 #include <stdio.h>
@@ -163,6 +192,7 @@ int main()
   printf("Test 6: %d\n", get6());
   printf("Test 7: %d\n", get7());
   printf("Test 8: %d\n", get8());
+  printf("Test 9: %d\n", get9());
+  printf("Test 10: %d\n", test10());
   return 0;
 }
-
