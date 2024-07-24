@@ -159,7 +159,7 @@ int get9(void)
   int before = y;
   *(&x + 1) = 42;
   int after = y;
-  return before + after;
+  return (after == before || after == 42);
 }
 
 /* However, &x + 1 and &y must not be assumed to be different */
