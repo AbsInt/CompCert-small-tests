@@ -149,8 +149,9 @@ int get8(void)
   return x;
 }
 
-/* For the purpose of alias analysis, &x + 1 and &y can be considered
-   different, even though they can point to the same address. */
+/* For the purpose of alias analysis, memory accesses to &x + 1 and to
+   &y can be assumed to not interfere, even though they can occur at
+   the same physical address.  */
 
 int x = 0, y = 0;
 
@@ -162,7 +163,7 @@ int get9(void)
   return (after == before || after == 42);
 }
 
-/* However, &x + 1 and &y must not be assumed to be different */
+/* However, &x + 1 and &y must not be assumed to compare different */
 
 int NOINLINE samepointer(int * p, int * q)
 {
