@@ -26,6 +26,11 @@ LZSS_OBJS=$(COMMON_OBJS) lzvars.o lzhash.o lzencode.o lzdecode.o lzssmain.o
 lzss: $(LZSS_OBJS)
 	$(CC) $(CFLAGS) -o $@ $(LZSS_OBJS) $(LIBS)
 
+all_s: $(ARCODE_OBJS:.o=.s) $(LZW_OBJS:.o=.s) $(LZSS_OBJS:.o=.s)
+
+%.s: %.c
+	$(CC) $(CFLAGS) -S $*.c
+
 TESTFILE:=$(firstword $(wildcard /usr/share/dict/words) ./lzss)
 TESTCOMPR=/tmp/testcompr.$$$$
 TESTEXPND=/tmp/testexpnd.$$$$

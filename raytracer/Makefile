@@ -14,6 +14,11 @@ all: render
 render: $(OBJS)
 	$(CC) $(CFLAGS) -o render $(OBJS) $(LIBS)
 
+all_s: $(OBJS:.o=.s)
+
+%.s: %.c
+	$(CC) $(CFLAGS) -S $*.c
+
 clean:
 	rm -f *.o *.parsed.c *.light.c *.s *.sdump *.ppm render
 

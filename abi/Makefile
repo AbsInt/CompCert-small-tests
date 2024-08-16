@@ -73,6 +73,7 @@ layout.h: genlayout.exe
 	./genlayout.exe $(GENLAYOUT_OPTIONS) > layout.h
 
 struct%.o: CCOMPFLAGS += -fstruct-passing -dclight
+struct%.s: CCOMPFLAGS += -fstruct-passing -dclight
 
 %_compcert.o: %.c
 	$(CCOMP) $(CCOMPFLAGS) -c -o $@ $*.c
@@ -80,7 +81,7 @@ struct%.o: CCOMPFLAGS += -fstruct-passing -dclight
 	$(CC) $(CFLAGS) -c -o $@ $*.c
 
 %_compcert.s: %.c
-	$(CCOMP) -S -o $@ $*.c
+	$(CCOMP) $(CCOMPFLAGS) -S -o $@ $*.c
 %_cc.s: %.c
 	$(CC) $(CFLAGS) -S -o $@ $*.c
 

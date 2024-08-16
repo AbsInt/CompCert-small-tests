@@ -17,6 +17,11 @@ all: spass
 spass: $(SRCS:.c=.o)
 	$(CC) $(CFLAGS) -o spass $(SRCS:.c=.o) $(LIBMATH)
 
+all_s: $(SRCS:.c=.s)
+
+%.s: %.c
+	$(CC) $(CFLAGS) -S $*.c
+
 clean:
 	rm -f spass
 	rm -f *.o *.s *.parsed.c *.light.c *.sdump

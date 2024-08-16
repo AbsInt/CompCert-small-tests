@@ -38,7 +38,7 @@ fft.vo fftsp.vo fftw.vo fib.vo integr.vo knucleotide.vo: CFLAGS += -short-idents
 
 qsort.vo sha1.vo sha3.vo siphash24.vo spectral.vo vmach.vo: CFLAGS += -normalize
 
-all: $(GENERATED:.v=.vo)
+all all_s: $(GENERATED:.v=.vo)
 
 test:
 

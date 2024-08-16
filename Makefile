@@ -8,6 +8,9 @@ endif
 all:
 	set -e; for i in $(DIRS); do $(MAKE) CCOMPOPTS='$(CCOMPOPTS)' -C $$i all; done
 
+all_s:
+	set -e; for i in $(DIRS); do $(MAKE) CCOMPOPTS='$(CCOMPOPTS)' -C $$i all_s; done
+
 test:
 	set -e; for i in $(DIRS); do $(MAKE) SIMU='$(SIMU)' -C $$i test; done
 
