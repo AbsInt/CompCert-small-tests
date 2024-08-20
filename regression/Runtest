@@ -32,7 +32,7 @@ fi
 # Special conditions
 
 if test -f "$name.cond"; then
-  RUN=0 SKIP=1 EXPECT_FAIL=2 sh "$name.cond"
+  RUN=0 SKIP=1 EXPECT_FAIL=2 ARCH=$arch BITS=$bits sh "$name.cond"
   case "$?" in
     1) echo "$name: skipped"; exit 0;;
     2) expect_fail=true;;
