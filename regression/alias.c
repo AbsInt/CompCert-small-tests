@@ -179,6 +179,19 @@ int test10(void)
     return res == 0;
 }
 
+/* Another example where pointers in two different blocks must not be
+   assumed to be different.  Otherwise, this function is optimized into
+   an infinite loop! */
+
+int ta[1], tb[1];
+
+char * test11(void)
+{
+  int *p = ta;
+  while(p != tb) p++;
+  return "OK";
+}
+
 /* Test harness */
 
 #include <stdio.h>
@@ -195,5 +208,6 @@ int main()
   printf("Test 8: %d\n", get8());
   printf("Test 9: %d\n", get9());
   printf("Test 10: %d\n", test10());
+  printf("Test 11: %s\n", test11());
   return 0;
 }
