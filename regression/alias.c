@@ -183,7 +183,7 @@ int test10(void)
    assumed to be different.  Otherwise, this function is optimized into
    an infinite loop! */
 
-int ta[1], tb[1];
+int ta[1]={42}, tb[1]={33};
 
 char * test11(void)
 {
