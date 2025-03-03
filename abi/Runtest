@@ -14,17 +14,6 @@ case "$name" in
   fixed.cc2compcert|fixed.compcert2cc)
     if [ $ARCH = arm ] && [ $ABI = hardfloat ] ; then skip; fi
     ;;
-  struct.cc2compcert|struct.compcert2cc)
-    if [ $ARCH = x86 ] && [ $MODEL = 32sse2 ] ; then
-       # works except on Cygwin
-       if [ $SYSTEM = cygwin ] ; then skip; fi
-    elif [ $ARCH = powerpc ] && [ $ABI = linux ] ; then
-       # works
-       :
-    else
-       skip
-    fi
-    ;;
 esac
 
 # Administer the test

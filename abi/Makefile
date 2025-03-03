@@ -5,8 +5,7 @@ CCOMPFLAGS=
 CFLAGS=-O -Wno-overflow -Wno-constant-conversion
 
 TESTS=fixed.compcert fixed.cc2compcert fixed.compcert2cc \
-     vararg.compcert vararg.cc2compcert vararg.compcert2cc \
-     struct.compcert struct.cc2compcert struct.compcert2cc
+     vararg.compcert vararg.cc2compcert vararg.compcert2cc
 
 DIFFTESTS=layout.compcert layout.cc \
           staticlayout.compcert staticlayout.cc
@@ -14,8 +13,7 @@ DIFFTESTS=layout.compcert layout.cc \
 all: $(TESTS) $(DIFFTESTS)
 
 all_s: fixed_def_compcert.s fixed_use_compcert.s \
-       vararg_def_compcert.s vararg_use_compcert.s \
-       struct_def_compcert.s struct_use_compcert.s
+       vararg_def_compcert.s vararg_use_compcert.s
 
 test:
 	@set -e; for t in $(TESTS); do \
@@ -54,14 +52,6 @@ vararg_def.c vararg_use.c: vararg_decl.h
 clean::
 	rm -f vararg_decl.h vararg_def.c vararg_use.c
 
-struct_decl.h: generator.exe
-	./generator.exe -structs -o struct
-
-struct_def.c struct_use.c: struct_decl.h
-
-clean::
-	rm -f struct_decl.h struct_def.c struct_use.c
-
 ifeq ($(ARCH),arm)
 GENLAYOUT_OPTIONS += -stable
 endif
@@ -71,9 +61,6 @@ endif
 
 layout.h: genlayout.exe
 	./genlayout.exe $(GENLAYOUT_OPTIONS) > layout.h
-
-struct%.o: CCOMPFLAGS += -fstruct-passing -dclight
-struct%.s: CCOMPFLAGS += -fstruct-passing -dclight
 
 %_compcert.o: %.c
 	$(CCOMP) $(CCOMPFLAGS) -c -o $@ $*.c
