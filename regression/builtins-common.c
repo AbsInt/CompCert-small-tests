@@ -47,6 +47,13 @@ int main(int argc, char ** argv)
   printf("fsqrt(%f) = %f\n", a, __builtin_fsqrt(a));
   printf("sqrt(%f) = %f\n", a, __builtin_sqrt(a));
 
+  printf("sel(0, %x, %x) = %x\n", x, y, __builtin_sel(x - x, x, y));
+  printf("sel(!0, %x, %x) = %x\n", x, y, __builtin_sel(x - y, x, y));
+  printf("sel(0, %llx, %x) = %llx\n", xx, y, __builtin_sel(x - x, xx, y));
+  printf("sel(!0, %llx, %x) = %llx\n", xx, y, __builtin_sel(x - y, xx, y));
+  printf("sel(0, %f, %f) = %f\n", a, b, __builtin_sel(x - x, a, b));
+  printf("sel(!0, %f, %f) = %f\n", a, b, __builtin_sel(x - y, a, b));
+
   /* Make sure that ignoring the result of a builtin
      doesn't cause an internal error */
   (void) __builtin_bswap(x);
