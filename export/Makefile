@@ -15,7 +15,7 @@ COQINCLUDES += -R ./csyntax compcert.test.csyntax
 
 CLIGHTGEN=../../clightgen -stdlib ../../runtime
 COQC=coqc
-COQCOPTS=-noglob -w -deprecated-native-compiler-option -native-compiler no
+COQCOPTS=-noglob -w -deprecated-from-Coq -w -deprecated-native-compiler-option -native-compiler no
 
 # Regression tests in the current directory
 SRC=$(wildcard *.c)
