@@ -1,6 +1,9 @@
 include ../Makefile.config
 
 DIRS=c compression raytracer spass regression abi
+ifeq ($(PIC_SUPPORTED),true)
+DIRS+=pic
+endif
 ifeq ($(CLIGHTGEN),true)
 DIRS+=export
 endif
