@@ -33,6 +33,19 @@ struct Trio t = {
   .v = { [1] = 42, 43 }
 };
 
+union {
+  struct { int x; int y; };
+  struct { int z; };
+} w = { {1, }, .y = 5 };
+
+union {
+  int d;
+  struct {
+    int b;
+    double c;
+  };
+} z1 = { .c=3.5, .b=5 }, z2 = { .b=5, .c=3.5 };
+
 int main()
 {
   int i;
@@ -67,6 +80,11 @@ int main()
   for (i = 0; i < 3; i++)
     printf("{%d,%d,%d}, ", t.m[i][0], t.m[i][1], t.m[i][2]);
   printf("} }\n");
+
+  printf("w = {%d, %d}\n", w.x, w.y);
+
+  printf("z1 = {%d, %.2f }\n", z1.b, z1.c);
+  printf("z2 = {%d, %.2f }\n", z2.b, z2.c);
 
   return 0;
 }
