@@ -22,10 +22,16 @@ union u2 {
   struct big v;
 };
 
+struct su {
+  char c;
+  union { long long l; double d; } u;
+};
+
 struct small A = { 1234, 3.14159, { 'H', 'e', 'l', 'l', 'o' }};
 struct big B = { 1, 2, 3, 4, 5 };
 union u1 C;
 union u2 D;
+struct su E = { 10, 4607182418800017408LL };
 
 int main()
 {
@@ -33,6 +39,7 @@ int main()
   struct big B1, B2;
   union u1 C2;
   union u2 D2;
+  struct su E2;
   int i;
 
   C.c = 'z';
@@ -68,6 +75,9 @@ int main()
 
   printf("AA[0] = { %d, %f, { '%c', ... , '%c' } }\n",
          AA[0].x, AA[0].d, AA[0].c[0], AA[0].c[4]);
+
+  E2.u = E.u;
+  printf("E2.d = %.1f\n", E2.u.d);
 
   return 0;
 }
