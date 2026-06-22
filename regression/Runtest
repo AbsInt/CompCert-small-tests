@@ -46,7 +46,7 @@ then
     echo "$name: ERROR (should have failed but did not)"
     exit 2
   elif test -n "$ref"; then
-    if cmp -s "$out" "$ref"; then
+    if ocaml ../tools/cmp.ml "$out" "$ref"; then
       echo "$name: passed"
       exit 0
     else

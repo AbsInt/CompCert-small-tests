@@ -2,6 +2,7 @@ include ../../Makefile.config
 
 CCOMP=../../ccomp
 CCOMPFLAGS=$(CCOMPOPTS) -stdlib ../../runtime -fpic
+CMP=ocaml ../tools/cmp.ml
 
 all: main dylib.so
 
@@ -18,7 +19,7 @@ run: all
 	LD_LIBRARY_PATH=. $(SIMU) ./main
 
 test: all
-	@if LD_LIBRARY_PATH=. $(SIMU) ./main | cmp -s - main.reference; \
+	@if LD_LIBRARY_PATH=. $(SIMU) ./main | $(CMP) - main.reference; \
          then echo "pic: passed"; \
          else echo "pic: FAILED"; exit 2; \
          fi

@@ -7,6 +7,7 @@ CFLAGS=-O1 -Wall
 
 LIBS=$(LIBMATH)
 
+CMP=ocaml ../tools/cmp.ml
 TIME=ocaml unix.cma ../tools/xtime.ml -o /dev/null -mintime 2.0 -minruns 4
 
 PROGS=fib integr qsort fft fftsp fftw sha1 sha3 aes almabench \
@@ -31,7 +32,7 @@ all_gcc: $(PROGS:%=%.gcc)
 
 test:
 	@for i in $(PROGS); do \
-	   if $(SIMU) ./$$i.compcert | cmp -s - Results/$$i; \
+	   if $(SIMU) ./$$i.compcert | $(CMP) - Results/$$i; \
            then echo "$$i: passed"; \
            else echo "$$i: FAILED"; exit 2; \
 	   fi; \
@@ -39,7 +40,7 @@ test:
 
 test_gcc:
 	@for i in $(PROGS); do \
-	   if ./$$i.gcc | cmp -s - Results/$$i; \
+	   if ./$$i.gcc | $(CMP) - Results/$$i; \
            then echo "$$i: passed"; \
            else echo "$$i: FAILED"; \
 	   fi; \

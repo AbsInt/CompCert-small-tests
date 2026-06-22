@@ -6,6 +6,7 @@ CCOMPFLAGS=$(CCOMPOPTS) -stdlib ../../runtime \
  -DARCH_$(ARCH) -DMODEL_$(MODEL)
 INTERPFLAGS=-stdlib ../../runtime -interp -quiet -fall
 LIBS=$(LIBMATH)
+CMP=ocaml ../tools/cmp.ml
 
 # Can run, both in compiled mode and in interpreter mode,
 # and have reference output in Results
@@ -67,7 +68,7 @@ test:
          done
 	@for i in $(TESTS_DIFF); do \
            if $(CCOMP) -fall -interp -quiet $$i.c > _cinterp.log; then \
-             if $(SIMU) ./$$i.compcert | cmp -s _cinterp.log -; \
+             if $(SIMU) ./$$i.compcert | $(CMP) _cinterp.log -; \
              then echo "$$i: compiler and interpreter agree"; \
              else echo "$$i: compiler and interpreter DISAGREE"; \
              fi; \
