@@ -1,0 +1,7 @@
+# Unreliable printing of hexadecimal FP numbers in interp mode under Windows
+# This is a mingw standard library issue.
+
+case "$SYSTEM,$INTERP" in
+  cygwin,1) exit $SKIP;;
+         *) exit $RUN;;
+esac

@@ -15,6 +15,7 @@ expect_fail=false
 # The architecture and the bitsize
 arch=`sed -n -e 's/^ARCH=//p' ../../Makefile.config`
 bits=`sed -n -e 's/^BITSIZE=//p' ../../Makefile.config`
+system=`sed -n -e 's/^SYSTEM=//p' ../../Makefile.config`
 
 # The reference output
 if test -f "Results/$name-$arch-$bits"; then
@@ -32,7 +33,7 @@ fi
 # Special conditions
 
 if test -f "$name.cond"; then
-  RUN=0 SKIP=1 EXPECT_FAIL=2 ARCH=$arch BITS=$bits sh "$name.cond"
+  RUN=0 SKIP=1 EXPECT_FAIL=2 ARCH=$arch BITS=$bits SYSTEM=$system sh "$name.cond"
   case "$?" in
     1) echo "$name: skipped"; exit 0;;
     2) expect_fail=true;;
