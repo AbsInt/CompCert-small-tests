@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <wchar.h>
-#include <uchar.h>
+// In some versions of Glibc, <uchar.t> is incompatible with CompCert.
+// Just define the two types `char16_t` and `char32_t` as specified in C11
+// #include <uchar.h>
+#include <stdint.h>
+typedef uint_least16_t char16_t;
+typedef uint_least32_t char32_t;
 
 unsigned char c1 = 'a';
 char16_t c2 = u'a';;
