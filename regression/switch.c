@@ -29,11 +29,14 @@ int f(int x)
   }
 }
 
+volatile long long gremlin = 0x1234567800000008;
+
 int main(void)
 {
   int i;
   for (i = -1; i <= 20; i++) {
     printf("f(%d) = %d\n", i, f(i));
   }
+  printf("f(gremlin) = %d\n", f((unsigned int) gremlin));
   return 0;
 }
