@@ -2,6 +2,12 @@
 
 /* Constant evaluation in cparser/Ceval */
 
+/* Non-strict constant evaluation of || and && */
+
+char a[2 || (1/0)];
+char b[2 + (0 && (1/0))];
+char c[(1ULL << 63) && "x"];
+
 /* Issue #566 */
 int f(int x)
 {
@@ -35,5 +41,8 @@ int main()
   printf("g(-1) = %d\n", g(- one));
   printf("g(0) = %d\n", g(zero));
   printf("g(1) = %d\n", g(one));
+  printf("sizeof(a) = %zu\n", sizeof(a));
+  printf("sizeof(b) = %zu\n", sizeof(b));
+  printf("sizeof(c) = %zu\n", sizeof(c));
 }
 

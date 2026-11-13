@@ -4,3 +4,6 @@ f(1) = 1
 g(-1) = 0
 g(0) = 1
 g(1) = 1
+sizeof(a) = 1
+sizeof(b) = 2
+sizeof(c) = 1
