@@ -12,7 +12,7 @@ LIBS=$(LIBMATH)
 
 TESTS=int32 int64 floats floats-basics floats-lit \
   expr1 expr6 funptr2 initializers initializers2 initializers3 \
-  volatile1 volatile2 volatile3 volatile4 \
+  volatile1 volatile2 volatile3 volatile4 volatile5 \
   funct3 expr5 struct7 struct8 struct11 struct12 casts1 casts2 char1 \
   sizeof1 sizeof2 binops bool for1 for2 switch switch2 compound \
   decl1 decl2 bitfields9 ptrs3 telescopes \
