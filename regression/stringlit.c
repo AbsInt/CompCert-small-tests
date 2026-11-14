@@ -41,6 +41,10 @@ int main()
   PRINT(s1); PRINT(s2); PRINT(s3); PRINT(s4); PRINT(s5);
   PRINT(t1); PRINT(t2); PRINT(t3); PRINT(t4); PRINT(t5);
   PRINT(e1); PRINT(e2); PRINT(e3); PRINT(e4); PRINT(e5);
+  // Check concatenation of plain strings with wide or UTF strings
+  printf("Size %zu\n", sizeof("abcd" L"") / sizeof(wchar_t));
+  printf("Size %zu\n", sizeof("abcd" u"") / sizeof(char16_t));
+  printf("Size %zu\n", sizeof("abcd" U"") / sizeof(char32_t));
   return 0;
 }
 
