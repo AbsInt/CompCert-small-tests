@@ -52,4 +52,8 @@ int main()
   PRINT(g1); PRINT(g2); PRINT(g3); PRINT(g4);
   PRINT(h1); PRINT(h2); PRINT(h3); PRINT(h4);
   PRINT(m1); PRINT(m2); PRINT(m3);
+  // Signedness checks
+  printf("%d\n", 'a' / -1);
+  printf("%d\n", u'a' / -1);
+  printf("%d\n", U'a' / -1);
 }
